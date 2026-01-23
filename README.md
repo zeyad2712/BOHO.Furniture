@@ -1,61 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🪑 BOHO Furniture - Premium E-Commerce Platform
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="200" alt="Laravel Logo">
 </p>
 
-## About Laravel
+**BOHO Furniture** is a sophisticated, high-end e-commerce platform built with Laravel 12, designed to provide a seamless and premium shopping experience for luxury furniture enthusiasts. The application features a clean, modern aesthetic with a focus on visual storytelling and user engagement.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🌍 Bilingual Experience
+- **Full Localization**: Seamlessly switch between **English** and **Arabic**.
+- **Localized Content**: Titles, descriptions, and UI elements are fully translated to cater to a global audience.
 
-## Learning Laravel
+### 🛋️ Advanced Product Management
+- **Dynamic Image Gallery**: Support for multiple professional images per product.
+- **Detailed Specifications**: Comprehensive product details including dimensions (Width, Height, Depth), SKU, and availability.
+- **Smart Filtering**: Category-based browsing and featured product showcases.
+- **Interactive Reviews**: Real-time customer feedback and rating system.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🛠️ Powerful Admin Dashboard
+- **Comprehensive Control**: Manage products, categories, users, and reviews from a central hub.
+- **Media Management**: Dynamic control over landing page imagery and project videos.
+- **Analytics at a Glance**: Overview of store performance and user activity.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 🎨 Modern UI/UX
+- **AOS Animations**: Smooth, scroll-triggered animations for a premium feel.
+- **Glassmorphism Design**: Sleek, modern interface with depth and clarity.
+- **Responsive Layout**: Optimized for Desktop, Tablet, and Mobile devices.
+- **Wishlist System**: Let users save their favorite pieces for later.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🚀 Tech Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Backend**: [Laravel 12.x](https://laravel.com) (PHP 8.2+)
+- **Frontend**: Blade Templates, [Tailwind CSS](https://tailwindcss.com), [Vite](https://vitejs.dev)
+- **Database**: MySQL / SQLite
+- **Interactions**: JavaScript (ES6+), [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
+- **Authentication**: Laravel Breeze
+- **Communication**: Twilio SDK Integration
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🛠️ Installation & Setup
 
-## Contributing
+Follow these steps to get the project running locally:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-repo/boho-furniture.git
+cd boho-furniture
+```
 
-## Code of Conduct
+### 2. Install Dependencies
+```bash
+composer install
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. Environment Configuration
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+*Configure your database settings in the `.env` file.*
 
-## Security Vulnerabilities
+### 4. Database Setup & Assets
+```bash
+# Run migrations and seed the database
+php artisan migrate --seed
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Link the storage directory for product images
+php artisan storage:link
+```
 
-## License
+### 5. Start the Application
+```bash
+# Run the development server
+php artisan serve
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Run Vite for frontend assets (Styles & Scripts)
+npm run dev
+```
+
+---
+
+## 📁 Project Structure Highlights
+
+- `app/Models/Product.php`: Core logic for bilingual products and specifications.
+- `app/Http/Controllers/Admin/`: Dedicated controllers for specialized admin management.
+- `resources/views/`: Beautifully crafted Blade templates with localized support.
+- `routes/web.php`: Clean, organized routing for both users and administrators.
+
+---
+
+## 📜 License
+
+The BOHO Furniture platform is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+<p align="center">Made with ❤️ for the Love of Design</p>
