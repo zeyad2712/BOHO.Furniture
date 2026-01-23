@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Category extends Model
+{
+    public $timestamps = true;
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'icon',
+        'is_active',
+    ];
+
+    // Relationship with products
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+}
