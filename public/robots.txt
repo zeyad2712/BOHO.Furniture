@@ -6,4 +6,4 @@ Disallow: /login
 Disallow: /register
 Disallow: /wishlist
 
-Sitemap: https://bohofurniture.com/sitemap.xml
+Sitemap: https://bohofurniture.net/sitemap.xml
