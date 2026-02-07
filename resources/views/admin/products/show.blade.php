@@ -43,8 +43,25 @@
                 <!-- Left Column: Product Image -->
                 <div class="lg:col-span-1" data-aos="fade-right">
                     <div class="bg-white rounded-2xl shadow-lg overflow-hidden p-4">
-                        <img src="{{ asset($product->image) }}" alt="{{ $product->name_en }}"
+                        <img src="{{ asset($product->image) }}" alt="{{ $product->display_name }}"
                             class="w-full h-auto object-cover rounded-xl shadow-md border border-gray-100">
+
+                        @if($product->images && $product->images->count() > 0)
+                            <div class="mt-6">
+                                <h4 class="text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest">Product Gallery</h4>
+                                <div class="grid grid-cols-4 gap-3">
+                                    @foreach($product->images as $galleryImage)
+                                        <div class="relative aspect-square rounded-lg overflow-hidden border border-gray-100 shadow-sm transition duration-300 hover:scale-105 cursor-pointer group hover:shadow-md">
+                                            <a href="{{ asset($galleryImage->image_path) }}" target="_blank">
+                                                <img src="{{ asset($galleryImage->image_path) }}" 
+                                                    class="w-full h-full object-cover">
+                                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
 
                         <div class="mt-6 space-y-4">
                             <div class="flex justify-between items-center py-2 border-b border-gray-100">

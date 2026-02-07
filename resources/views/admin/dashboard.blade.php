@@ -203,7 +203,7 @@
                         </a>
                     </div>
                     <div class="space-y-4">
-                        @foreach(\App\Models\Product::latest()->take(5)->get() as $product)
+                        @forelse(\App\Models\Product::latest()->take(5)->get() as $product)
                             <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 rounded-lg transition duration-200">
                                 <img src="{{ asset($product->image) }}" alt="{{ $product->name }}"
                                     class="w-16 h-16 object-cover rounded-lg">
@@ -219,7 +219,22 @@
                                     </span>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="py-12 flex flex-col items-center justify-center text-center">
+                                <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-box-open text-gray-300 text-4xl"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800 mb-1">No products yet</h4>
+                                <p class="text-gray-500 text-sm mb-6 max-w-xs mx-auto">
+                                    Start building your catalog by adding your first furniture piece.
+                                </p>
+                                <a href="{{ route('admin.products.create') }}" 
+                                   class="inline-flex items-center px-4 py-2 bg-[#7b8f5a] text-white rounded-lg font-semibold hover:bg-[#6c7d4e] transition duration-300">
+                                    <i class="fas fa-plus mr-2 text-sm"></i>
+                                    Add Your First Product
+                                </a>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
 
