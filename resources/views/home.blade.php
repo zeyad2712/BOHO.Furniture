@@ -435,7 +435,7 @@
                         data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <!-- Product Image -->
                         <div class="relative overflow-hidden">
-                            <img src="{{ asset($product->image) }}" alt="{{ $product->display_name }}"
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->display_name }}"
                                 class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                             <!-- Discount Badge -->
                             @if($product->discount_percentage > 0)
@@ -525,7 +525,7 @@
                         data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <!-- Product Image -->
                         <div class="relative overflow-hidden">
-                            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}"
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                 class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                             <!-- Discount Badge -->
                             @if($product->discount_percentage > 0)
@@ -542,7 +542,7 @@
                             </p>
 
                             <!-- Product Name -->
-                            <h3 class="text-gray-800 font-bold text-lg leading-tight">{{ $product->name }}</h3>
+                            <h3 class="text-gray-800 font-bold text-lg leading-tight">{{ $product->display_name }}</h3>
 
                             <!-- Rating -->
                             <div class="flex items-center gap-1">

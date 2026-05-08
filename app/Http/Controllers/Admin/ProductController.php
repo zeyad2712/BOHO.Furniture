@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -72,61 +72,86 @@ class ProductController extends Controller
      * Store a newly created product
      */
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'name_en' => 'required|string|max:255',
-            'name_ar' => 'required|string|max:255',
-            'description_en' => 'required|string',
-            'description_ar' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'original_price' => 'nullable|numeric|min:0',
-            'stock' => 'required|integer|min:0',
-            'status' => 'required|in:new_arrival,best_selling',
-            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'colors' => 'nullable|array',
-            'colors.*' => 'required|string|max:7', // Hex codes
-            'width' => 'nullable|numeric|min:0',
-            'height' => 'nullable|numeric|min:0',
-            'depth' => 'nullable|numeric|min:0',
-            'dimension_unit' => 'nullable|string|in:cm,m,inch,ft',
-        ]);
+{
+    $validated = $request->validate([
+        'category_id' => 'required|exists:categories,id',
+        'name_en' => 'required|string|max:255',
+        'name_ar' => 'required|string|max:255',
+        'description_en' => 'required|string',
+        'description_ar' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'original_price' => 'nullable|numeric|min:0',
+        'stock' => 'required|integer|min:0',
+        'status' => 'required|in:new_arrival,best_selling',
+        'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
+        'colors' => 'nullable|array',
+        'colors.*' => 'required|string|max:7',
+        'width' => 'nullable|numeric|min:0',
+        'height' => 'nullable|numeric|min:0',
+        'depth' => 'nullable|numeric|min:0',
+        'dimension_unit' => 'nullable|string|in:cm,m,inch,ft',
+        'gallery.*' => 'image|mimes:jpeg,png,jpg,webp|max:5120',
+    ]);
 
-        $validated['colors'] = $request->colors ?? [];
+    $validated['colors'] = $request->colors ?? [];
 
-        // Handle Image Upload
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
-            $validated['image'] = 'storage/' . $imagePath;
+    // 🔹 Upload main image (public/storage)
+    if ($request->hasFile('image')) {
+    
+        $image = $request->file('image');
+        $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
+    
+        $destination = public_path('storage/products');
+        if (!file_exists($destination)) {
+            mkdir($destination, 0755, true);
         }
-
-        // Generate slug
-        $validated['slug'] = Str::slug($validated['name_en']);
-
-        // Calculate discount if original price exists
-        if (isset($validated['original_price']) && $validated['original_price'] > $validated['price']) {
-            $validated['discount_percentage'] = round((($validated['original_price'] - $validated['price']) / $validated['original_price']) * 100);
-        } else {
-            $validated['discount_percentage'] = 0;
-        }
-
-        $validated['is_new_arrival'] = $validated['status'] === 'new_arrival';
-        $validated['is_best_seller'] = $validated['status'] === 'best_selling';
-
-        $product = Product::create($validated);
-
-        // Handle Gallery Images
-        if ($request->hasFile('gallery')) {
-            foreach ($request->file('gallery') as $image) {
-                $path = $image->store('products/gallery', 'public');
-                $product->images()->create([
-                    'image_path' => 'storage/' . $path
-                ]);
-            }
-        }
-
-        return redirect()->route('admin.products.index')->with('success', 'Product created successfully!');
+    
+        $image->move($destination, $fileName);
+    
+        // نخزن المسار النسبي فقط
+        $validated['image'] = 'products/' . $fileName;
     }
+
+    // 🔹 Generate slug
+    $validated['slug'] = Str::slug($validated['name_en']);
+
+    // 🔹 Discount calculation
+    if (!empty($validated['original_price']) && $validated['original_price'] > $validated['price']) {
+        $validated['discount_percentage'] = round(
+            (($validated['original_price'] - $validated['price']) / $validated['original_price']) * 100
+        );
+    } else {
+        $validated['discount_percentage'] = 0;
+    }
+
+    $validated['is_new_arrival'] = $validated['status'] === 'new_arrival';
+    $validated['is_best_seller'] = $validated['status'] === 'best_selling';
+
+    $product = Product::create($validated);
+
+    // 🔹 Upload gallery images
+    if ($request->hasFile('gallery')) {
+    foreach ($request->file('gallery') as $image) {
+
+        $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
+
+        $destination = public_path('storage/products/gallery');
+        if (!file_exists($destination)) {
+            mkdir($destination, 0755, true);
+        }
+
+        $image->move($destination, $fileName);
+
+        $product->images()->create([
+            'image_path' => 'products/gallery/' . $fileName
+        ]);
+    }
+}
+
+    return redirect()
+        ->route('admin.products.index')
+        ->with('success', 'Product created successfully!');
+}
 
     /**
      * Display the specified product
@@ -174,17 +199,26 @@ class ProductController extends Controller
 
         // Handle Image Upload
         if ($request->hasFile('image')) {
-            // Delete old image if it exists and is in storage
-            if ($product->image && str_contains($product->image, 'storage/products/')) {
-                Storage::disk('public')->delete(str_replace('storage/', '', $product->image));
-            }
 
-            $imagePath = $request->file('image')->store('products', 'public');
-            $validated['image'] = 'storage/' . $imagePath;
-        } else {
-            // Keep existing image
-            unset($validated['image']);
+    // حذف الصورة القديمة
+        if ($product->image && file_exists(public_path('storage/' . $product->image))) {
+            unlink(public_path('storage/' . $product->image));
         }
+    
+        $image = $request->file('image');
+        $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
+    
+        $destination = public_path('storage/products');
+        if (!file_exists($destination)) {
+            mkdir($destination, 0755, true);
+        }
+    
+        $image->move($destination, $fileName);
+    
+        $validated['image'] = 'products/' . $fileName;
+    } else {
+        unset($validated['image']);
+    }
 
         // Generate slug
         $validated['slug'] = Str::slug($validated['name_en']);
@@ -203,13 +237,22 @@ class ProductController extends Controller
 
         // Handle New Gallery Images
         if ($request->hasFile('gallery')) {
-            foreach ($request->file('gallery') as $image) {
-                $path = $image->store('products/gallery', 'public');
-                $product->images()->create([
-                    'image_path' => 'storage/' . $path
-                ]);
+        foreach ($request->file('gallery') as $image) {
+    
+            $fileName = uniqid() . '.' . $image->getClientOriginalExtension();
+    
+            $destination = public_path('storage/products/gallery');
+            if (!file_exists($destination)) {
+                mkdir($destination, 0755, true);
             }
+    
+            $image->move($destination, $fileName);
+    
+            $product->images()->create([
+                'image_path' => 'products/gallery/' . $fileName
+            ]);
         }
+    }
 
         return redirect()->route('admin.products.index')->with('success', 'Product updated successfully!');
     }
@@ -219,18 +262,18 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        // Delete image from storage if it exists
-        if ($product->image && str_contains($product->image, 'storage/products/')) {
-            Storage::disk('public')->delete(str_replace('storage/', '', $product->image));
+        // Delete main image
+        if ($product->image && file_exists(public_path('storage/' . $product->image))) {
+            unlink(public_path('storage/' . $product->image));
         }
-
-        // Delete gallery images from storage
+        
+        // Delete gallery images
         foreach ($product->images as $image) {
-            if (str_contains($image->image_path, 'storage/products/gallery/')) {
-                Storage::disk('public')->delete(str_replace('storage/', '', $image->image_path));
+            if (file_exists(public_path('storage/' . $image->image_path))) {
+                unlink(public_path('storage/' . $image->image_path));
             }
         }
-
+        
         $product->delete();
         return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully!');
     }
@@ -240,10 +283,10 @@ class ProductController extends Controller
      */
     public function deleteGalleryImage(ProductImage $image)
     {
-        if (str_contains($image->image_path, 'storage/products/gallery/')) {
-            Storage::disk('public')->delete(str_replace('storage/', '', $image->image_path));
+        if (file_exists(public_path('storage/' . $image->image_path))) {
+            unlink(public_path('storage/' . $image->image_path));
         }
-
+        
         $image->delete();
         return back()->with('success', 'Gallery image deleted successfully!');
     }

@@ -12,6 +12,8 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 
 // User Routes
@@ -21,6 +23,23 @@ Route::get('/lang/{locale}', function ($locale) {
     }
     return redirect()->back();
 })->name('lang.switch');
+
+Route::get('/migrate', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return 'Migration completed';
+});
+
+Route::get('/clear' , function (){
+    Artisan::call('config:clear');
+    return 'cleared';
+});
+
+Route::get('/storelink', function () {
+    Artisan::call('storage:link');
+    return 'Storage link created successfully';
+});
+
+
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // Products
@@ -81,15 +100,15 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::delete('product-reviews/{review}', [App\Http\Controllers\Admin\ProductReviewController::class, 'destroy'])->name('product-reviews.destroy');
 });
 // Route for sitemap.xml
-Route::get('/sitemap.xml', function () {
-    $products = \App\Models\Product::all();
-    $categories = \App\Models\Category::all();
+// Route::get('/sitemap.xml', function () {
+//     $products = \App\Models\Product::all();
+//     $categories = \App\Models\Category::all();
 
-    return response()->view('sitemap', [
-        'products' => $products,
-        'categories' => $categories,
-    ])->header('Content-Type', 'text/xml');
-});
+//     return response()->view('sitemap', [
+//         'products' => $products,
+//         'categories' => $categories,
+//     ])->header('Content-Type', 'text/xml');
+// });
 
 // Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 

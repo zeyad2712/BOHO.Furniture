@@ -133,7 +133,7 @@
                                 <tr class="hover:bg-gray-50 transition duration-200">
                                     <!-- Image -->
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <img src="{{ asset($product->image) }}" alt="{{ $product->name_en }}"
+                                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name_en }}"
                                             class="w-16 h-16 object-cover rounded-lg">
                                     </td>
 

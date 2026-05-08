@@ -160,117 +160,118 @@
     </section>
 
     <!-- Team Section -->
-    <section class="py-24 bg-[#7b8f5a]/5" id="team">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 data-aos="fade-down" class="text-4xl font-bold text-center mb-6" style="color: #8B4513;">
-                {{ __('messages.meet_team') }}</h2>
-            <p data-aos="fade-up" class="text-center text-gray-600 mb-16 max-w-2xl mx-auto text-lg">
-                {{ __('messages.team_desc') }}
-            </p>
+    
+    <!--<section class="py-24 bg-[#7b8f5a]/5" id="team">-->
+    <!--    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">-->
+    <!--        <h2 data-aos="fade-down" class="text-4xl font-bold text-center mb-6" style="color: #8B4513;">-->
+    <!--            {{ __('messages.meet_team') }}</h2>-->
+    <!--        <p data-aos="fade-up" class="text-center text-gray-600 mb-16 max-w-2xl mx-auto text-lg">-->
+    <!--            {{ __('messages.team_desc') }}-->
+    <!--        </p>-->
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!--        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">-->
                 <!-- Team Member 1 -->
-                <div data-aos="flip-left" data-aos-delay="100"
-                    class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">
-                    <div
-                        class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">
-                        <div
-                            class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">
-                            <span class="text-5xl font-extrabold text-[#7b8f5a]">AH</span>
-                        </div>
-                    </div>
-                    <div class="p-8 text-center">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Ahmed Hassan</h3>
-                        <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">
-                            {{ __('messages.founder_ceo') }}</p>
-                        <p class="text-gray-600 leading-relaxed">Visionary leader with 15 years in furniture design</p>
-                    </div>
-                    <div class="px-8 pb-8 text-center mt-auto">
-                        <a href="https://wa.me/201080434434" target="_blank"
-                            class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                            <span>{{ __('messages.chat_whatsapp') }}</span>
-                        </a>
-                    </div>
-                </div>
+    <!--            <div data-aos="flip-left" data-aos-delay="100"-->
+    <!--                class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">-->
+    <!--                <div-->
+    <!--                    class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">-->
+    <!--                    <div-->
+    <!--                        class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">-->
+    <!--                        <span class="text-5xl font-extrabold text-[#7b8f5a]">AH</span>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="p-8 text-center">-->
+    <!--                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Ahmed Hassan</h3>-->
+    <!--                    <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">-->
+    <!--                        {{ __('messages.founder_ceo') }}</p>-->
+    <!--                    <p class="text-gray-600 leading-relaxed">Visionary leader with 15 years in furniture design</p>-->
+    <!--                </div>-->
+    <!--                <div class="px-8 pb-8 text-center mt-auto">-->
+    <!--                    <a href="https://wa.me/201080434434" target="_blank"-->
+    <!--                        class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">-->
+    <!--                        <i class="fab fa-whatsapp text-xl"></i>-->
+    <!--                        <span>{{ __('messages.chat_whatsapp') }}</span>-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--            </div>-->
 
                 <!-- Team Member 2 -->
-                <div data-aos="flip-left" data-aos-delay="200"
-                    class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">
-                    <div
-                        class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">
-                        <div
-                            class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">
-                            <span class="text-5xl font-extrabold text-[#7b8f5a]">SM</span>
-                        </div>
-                    </div>
-                    <div class="p-8 text-center">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Sara Mohamed</h3>
-                        <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">
-                            {{ __('messages.head_designer') }}</p>
-                        <p class="text-gray-600 leading-relaxed">Creative mind behind our iconic collections</p>
-                    </div>
-                    <div class="px-8 pb-8 text-center mt-auto">
-                        <a href="https://wa.me/201080434434" target="_blank"
-                            class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                            <span>{{ __('messages.chat_whatsapp') }}</span>
-                        </a>
-                    </div>
-                </div>
+    <!--            <div data-aos="flip-left" data-aos-delay="200"-->
+    <!--                class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">-->
+    <!--                <div-->
+    <!--                    class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">-->
+    <!--                    <div-->
+    <!--                        class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">-->
+    <!--                        <span class="text-5xl font-extrabold text-[#7b8f5a]">SM</span>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="p-8 text-center">-->
+    <!--                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Sara Mohamed</h3>-->
+    <!--                    <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">-->
+    <!--                        {{ __('messages.head_designer') }}</p>-->
+    <!--                    <p class="text-gray-600 leading-relaxed">Creative mind behind our iconic collections</p>-->
+    <!--                </div>-->
+    <!--                <div class="px-8 pb-8 text-center mt-auto">-->
+    <!--                    <a href="https://wa.me/201080434434" target="_blank"-->
+    <!--                        class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">-->
+    <!--                        <i class="fab fa-whatsapp text-xl"></i>-->
+    <!--                        <span>{{ __('messages.chat_whatsapp') }}</span>-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--            </div>-->
 
                 <!-- Team Member 3 -->
-                <div data-aos="flip-left" data-aos-delay="300"
-                    class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">
-                    <div
-                        class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">
-                        <div
-                            class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">
-                            <span class="text-5xl font-extrabold text-[#7b8f5a]">KA</span>
-                        </div>
-                    </div>
-                    <div class="p-8 text-center">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Karim Ali</h3>
-                        <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">
-                            {{ __('messages.master_craftsman') }}</p>
-                        <p class="text-gray-600 leading-relaxed">Expert artisan with traditional woodworking skills</p>
-                    </div>
-                    <div class="px-8 pb-8 text-center mt-auto">
-                        <a href="https://wa.me/201080434434" target="_blank"
-                            class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                            <span>{{ __('messages.chat_whatsapp') }}</span>
-                        </a>
-                    </div>
-                </div>
+    <!--            <div data-aos="flip-left" data-aos-delay="300"-->
+    <!--                class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">-->
+    <!--                <div-->
+    <!--                    class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">-->
+    <!--                    <div-->
+    <!--                        class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">-->
+    <!--                        <span class="text-5xl font-extrabold text-[#7b8f5a]">KA</span>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="p-8 text-center">-->
+    <!--                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Karim Ali</h3>-->
+    <!--                    <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">-->
+    <!--                        {{ __('messages.master_craftsman') }}</p>-->
+    <!--                    <p class="text-gray-600 leading-relaxed">Expert artisan with traditional woodworking skills</p>-->
+    <!--                </div>-->
+    <!--                <div class="px-8 pb-8 text-center mt-auto">-->
+    <!--                    <a href="https://wa.me/201080434434" target="_blank"-->
+    <!--                        class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">-->
+    <!--                        <i class="fab fa-whatsapp text-xl"></i>-->
+    <!--                        <span>{{ __('messages.chat_whatsapp') }}</span>-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--            </div>-->
 
                 <!-- Team Member 4 -->
-                <div data-aos="flip-left" data-aos-delay="400"
-                    class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">
-                    <div
-                        class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">
-                        <div
-                            class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">
-                            <span class="text-5xl font-extrabold text-[#7b8f5a]">LF</span>
-                        </div>
-                    </div>
-                    <div class="p-8 text-center">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Layla Farid</h3>
-                        <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">
-                            {{ __('messages.customer_success') }}</p>
-                        <p class="text-gray-600 leading-relaxed">Dedicated to ensuring customer satisfaction</p>
-                    </div>
-                    <div class="px-8 pb-8 text-center mt-auto">
-                        <a href="https://wa.me/201080434434" target="_blank"
-                            class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                            <span>{{ __('messages.chat_whatsapp') }}</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!--            <div data-aos="flip-left" data-aos-delay="400"-->
+    <!--                class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 group flex flex-col border border-gray-50">-->
+    <!--                <div-->
+    <!--                    class="h-72 bg-gradient-to-br from-[#7b8f5a] to-[#6c7d4e] flex items-center justify-center overflow-hidden">-->
+    <!--                    <div-->
+    <!--                        class="w-36 h-36 bg-white rounded-full flex items-center justify-center transform group-hover:scale-110 transition duration-500 shadow-2xl">-->
+    <!--                        <span class="text-5xl font-extrabold text-[#7b8f5a]">LF</span>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="p-8 text-center">-->
+    <!--                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Layla Farid</h3>-->
+    <!--                    <p class="text-[#7b8f5a] font-bold mb-4 uppercase tracking-widest text-xs">-->
+    <!--                        {{ __('messages.customer_success') }}</p>-->
+    <!--                    <p class="text-gray-600 leading-relaxed">Dedicated to ensuring customer satisfaction</p>-->
+    <!--                </div>-->
+    <!--                <div class="px-8 pb-8 text-center mt-auto">-->
+    <!--                    <a href="https://wa.me/201080434434" target="_blank"-->
+    <!--                        class="w-full bg-[#25D366] text-white py-3 rounded-xl font-bold hover:bg-[#128C7E] transition duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">-->
+    <!--                        <i class="fab fa-whatsapp text-xl"></i>-->
+    <!--                        <span>{{ __('messages.chat_whatsapp') }}</span>-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
 
     <!-- Call to Action -->
     <section class="py-24 bg-[#7b8f5a] relative overflow-hidden">

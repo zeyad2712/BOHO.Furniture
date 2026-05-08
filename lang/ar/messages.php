@@ -157,7 +157,7 @@ return [
     'ready_transform_desc' => 'استكشف مجموعتنا وابحث عن القطع المثالية لمنزلك',
 
     // Layout & Footer
-    'boho_furniture' => 'بوهو للأثاث',
+    'boho_furniture' => 'بوهو ',
     'terms_policies' => 'الشروط والسياسات',
     'quick_links' => 'روابط سريعة',
     'follow_us' => 'تابعنا!',

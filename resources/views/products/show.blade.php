@@ -2,7 +2,7 @@
 
 @section('title', $product->display_name . ' | BOHO Furniture')
 @section('meta_description', Str::limit(strip_tags($product->display_description), 160))
-@section('og_image', asset($product->image))
+@section('og_image', Storage::url($product->image))
 
 @section('meta')
     <!-- JSON-LD for Product Schema -->
@@ -11,7 +11,7 @@
                 "@context": "https://schema.org/",
                 "@type": "Product",
                 "name": "{{ $product->display_name }}",
-                "image": "{{ asset($product->image) }}",
+                "image": "{{ Storage::url($product->image) }}",
                 "description": "{{ Str::limit(strip_tags($product->display_description), 160) }}",
                 "brand": {
                     "@type": "Brand",
@@ -59,19 +59,18 @@
 
                 <!-- Left: Product Images -->
                 <div data-aos="fade-right" x-data="{ 
-                                                                        activeImage: '{{ asset($product->image) }}',
-                                                                        images: [
-                                                                            '{{ asset($product->image) }}',
-                                                                            @foreach($product->images as $img)
-                                                                                '{{ asset($img->image_path) }}',
-                                                                            @endforeach
-                                                                        ]
-                                                                    }">
+                    activeImage: '{{ Storage::url($product->image) }}',
+                    images: [
+                        '{{ Storage::url($product->image) }}',
+                        @foreach($product->images as $img)
+                            '{{ Storage::url($img->image_path) }}',
+                        @endforeach
+                    ]
+                    }">
                     <!-- Main Image Display -->
                     <div class="bg-white rounded-3xl overflow-hidden shadow-2xl mb-6 relative group aspect-square">
                         <img :src="activeImage" alt="{{ $product->display_name }}"
                             class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-
                         <!-- Zoom Overlay (Optional) -->
                         <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition duration-300">
                         </div>
@@ -80,18 +79,18 @@
                     <!-- Thumbnails Gallery -->
                     <div class="grid grid-cols-4 sm:grid-cols-5 gap-4">
                         <!-- Main Image Thumbnail -->
-                        <button @click="activeImage = '{{ asset($product->image) }}'"
-                            :class="activeImage === '{{ asset($product->image) }}' ? 'ring-2 ring-[#7b8f5a] opacity-100 scale-105' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'"
+                        <button @click="activeImage = '{{ Storage::url($product->image) }}'"
+                            :class="activeImage === '{{ Storage::url($product->image) }}' ? 'ring-2 ring-[#7b8f5a] opacity-100 scale-105' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'"
                             class="aspect-square rounded-xl overflow-hidden bg-white shadow-md transition duration-300 transform">
-                            <img src="{{ asset($product->image) }}" class="w-full h-full object-cover">
+                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->display_name }}" class="w-full h-full object-cover">
                         </button>
 
                         <!-- Additional Gallery Thumbnails -->
                         @foreach($product->images as $galleryImg)
-                            <button @click="activeImage = '{{ asset($galleryImg->image_path) }}'"
-                                :class="activeImage === '{{ asset($galleryImg->image_path) }}' ? 'ring-2 ring-[#7b8f5a] opacity-100 scale-105' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'"
+                            <button @click="activeImage = '{{ Storage::url($galleryImg->image_path) }}'"
+                                :class="activeImage === '{{ Storage::url($galleryImg->image_path) }}' ? 'ring-2 ring-[#7b8f5a] opacity-100 scale-105' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'"
                                 class="aspect-square rounded-xl overflow-hidden bg-white shadow-md transition duration-300 transform">
-                                <img src="{{ asset($galleryImg->image_path) }}" class="w-full h-full object-cover">
+                                <img src="{{ Storage::url($galleryImg->image_path) }}" alt="{{ $product->display_name }}" class="w-full h-full object-cover">
                             </button>
                         @endforeach
                     </div>
@@ -721,7 +720,7 @@
                             class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 group">
                             <!-- Product Image -->
                             <div class="relative overflow-hidden">
-                                <img src="{{ asset($relatedProduct->image) }}" alt="{{ $relatedProduct->display_name }}"
+                                <img src="{{ Storage::url($relatedProduct->image) }}" alt="{{ $relatedProduct->display_name }}"
                                     class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                                 @if($relatedProduct->discount_percentage > 0)
                                     <div
