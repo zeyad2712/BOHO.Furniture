@@ -50,11 +50,27 @@ class Product extends Model
     }
 
     /**
+     * Alias for localized name
+     */
+    public function getNameAttribute()
+    {
+        return $this->display_name;
+    }
+
+    /**
      * Get localized description
      */
     public function getDisplayDescriptionAttribute()
     {
         return app()->getLocale() === 'ar' ? ($this->description_ar ?? $this->description_en) : ($this->description_en ?? $this->description_ar);
+    }
+
+    /**
+     * Alias for localized description
+     */
+    public function getDescriptionAttribute()
+    {
+        return $this->display_description;
     }
 
     // Relationship with category

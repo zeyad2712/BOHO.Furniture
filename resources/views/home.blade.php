@@ -452,7 +452,7 @@
                             </p>
 
                             <!-- Product Name -->
-                            <h3 class="text-gray-800 font-bold text-lg leading-tight">{{ $product->display_name }}</h3>
+                            <h3 class="text-gray-800 font-bold text-lg leading-tight">{{ $product->name }}</h3>
 
                             <!-- Rating -->
                             <div class="flex items-center gap-1">

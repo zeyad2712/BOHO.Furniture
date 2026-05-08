@@ -283,7 +283,7 @@
                                  id="dropZone">
                                 
                                 <div id="imagePreview" class="{{ $product->image ? '' : 'hidden' }} mb-4">
-                                    <img id="previewImg" src="{{ $product->image ? asset($product->image) : '' }}" 
+                                    <img id="previewImg" src="{{ asset('storage/' . $product->image) }}" 
                                          class="mx-auto max-h-48 rounded-lg shadow-lg">
                                 </div>
 
@@ -326,7 +326,7 @@
                             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 mb-6">
                                 @foreach($product->images as $galleryImage)
                                     <div class="relative group aspect-square">
-                                        <img src="{{ asset($galleryImage->image_path) }}" 
+                                        <img src="{{ asset('storage/' . $galleryImage->image_path) }}" 
                                              class="w-full h-full object-cover rounded-lg shadow-sm">
                                         
                                         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition rounded-lg flex items-center justify-center">
