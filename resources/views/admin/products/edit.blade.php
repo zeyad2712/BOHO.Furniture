@@ -284,7 +284,7 @@
                                 
                                 <div id="imagePreview" class="{{ $product->image ? '' : 'hidden' }} mb-4">
                                     <img id="previewImg" src="{{ asset('storage/' . $product->image) }}" 
-                                         class="mx-auto max-h-48 rounded-lg shadow-lg">
+                                         class="mx-auto max-h-48 rounded-lg shadow-lg" loading="lazy">
                                 </div>
 
                                 <div id="uploadPlaceholder" class="{{ $product->image ? 'hidden' : '' }}">
@@ -327,7 +327,7 @@
                                 @foreach($product->images as $galleryImage)
                                     <div class="relative group aspect-square">
                                         <img src="{{ asset('storage/' . $galleryImage->image_path) }}" 
-                                             class="w-full h-full object-cover rounded-lg shadow-sm">
+                                             class="w-full h-full object-cover rounded-lg shadow-sm" loading="lazy">
                                         
                                         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition rounded-lg flex items-center justify-center">
                                             <button type="button" 
@@ -414,7 +414,7 @@
                                     reader.onload = function(e) {
                                         const div = document.createElement('div');
                                         div.className = 'relative aspect-square';
-                                        div.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover rounded-lg shadow-md">`;
+                                        div.innerHTML = `<img src="${e.target.result}" class="w-full h-full object-cover rounded-lg shadow-md" loading="lazy">`;
                                         previewContainer.appendChild(div);
                                     }
                                     reader.readAsDataURL(file);

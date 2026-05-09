@@ -126,7 +126,8 @@
                                             <div class="flex items-center">
                                                 <img src="{{ asset($review->product->image) }}" 
                                                      alt="{{ $review->product->name_en }}"
-                                                     class="w-12 h-12 rounded-lg object-cover mr-3 transform hover:scale-110 transition duration-300">
+                                                     class="w-12 h-12 rounded-lg object-cover mr-3 transform hover:scale-110 transition duration-300"
+                                                     loading="lazy">
                                                 <div>
                                                     <div class="text-sm font-medium text-gray-900">
                                                         {{ Str::limit($review->product->name_en, 30) }}

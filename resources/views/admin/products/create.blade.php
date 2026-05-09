@@ -203,7 +203,7 @@
                                  id="dropZone">
                                 
                                 <div id="imagePreview" class="hidden mb-4">
-                                    <img id="previewImg" src="" alt="Preview" class="mx-auto max-h-48 rounded-lg shadow-lg">
+                                    <img id="previewImg" src="" alt="Preview" class="mx-auto max-h-48 rounded-lg shadow-lg" loading="lazy">
                                 </div>
 
                                 <div id="uploadPlaceholder">
@@ -354,7 +354,7 @@
                                             const div = document.createElement('div');
                                             div.className = 'relative group aspect-square';
                                             div.innerHTML = `
-                                                <img src="${e.target.result}" class="w-full h-full object-cover rounded-lg shadow-md">
+                                                <img src="${e.target.result}" class="w-full h-full object-cover rounded-lg shadow-md" loading="lazy">
                                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition rounded-lg flex items-center justify-center">
                                                     <i class="fas fa-check text-white"></i>
                                                 </div>

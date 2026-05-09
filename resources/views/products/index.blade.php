@@ -128,7 +128,7 @@
                         <!-- Product Image -->
                         <div class="relative overflow-hidden">
                             <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
-                                class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                                class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                             <!-- Discount Badge -->
                             @if($product->discount_percentage > 0)
                                 <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm">

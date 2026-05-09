@@ -125,7 +125,7 @@
                                     <div class="border rounded-lg p-4 hover:shadow-md transition duration-200">
                                         <div class="relative">
                                             <img src="{{ asset($wishlist->product->image) }}" alt="{{ $wishlist->product->name }}"
-                                                class="w-full h-40 object-cover rounded-lg mb-3">
+                                                class="w-full h-40 object-cover rounded-lg mb-3" loading="lazy">
                                             <button
                                                 onclick="removeFromWishlist({{ $wishlist->product->id }})"
                                                 class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-red-500 hover:bg-red-50">

@@ -26,7 +26,7 @@
                 <div class="p-6 flex flex-col items-center">
                     @if($landingImage)
                         <img src="{{ Storage::url($landingImage->image_path) }}"  alt="Current Landing Image"
-                            class="max-w-full h-auto rounded-xl shadow-lg mb-4" style="max-height: 400px;">
+                            class="max-w-full h-auto rounded-xl shadow-lg mb-4" style="max-height: 400px;" loading="lazy">
                         <p class="text-gray-500 text-sm">Alt Text: {{ $landingImage->alt_text ?? 'None' }}</p>
                     @else
                         <div

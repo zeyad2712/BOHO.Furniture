@@ -44,7 +44,7 @@
                 <div class="lg:col-span-1" data-aos="fade-right">
                     <div class="bg-white rounded-2xl shadow-lg overflow-hidden p-4">
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->display_name }}"
-                            class="w-full h-auto object-cover rounded-xl shadow-md border border-gray-100">
+                            class="w-full h-auto object-cover rounded-xl shadow-md border border-gray-100" loading="lazy">
                             
                             @if($product->images && $product->images->count() > 0)
                             <div class="mt-6">
@@ -54,7 +54,7 @@
                                         <div class="relative aspect-square rounded-lg overflow-hidden border border-gray-100 shadow-sm transition duration-300 hover:scale-105 cursor-pointer group hover:shadow-md">
                                             <a href="{{ asset('storage/' . $galleryImage->image_path) }}" target="_blank">
                                                 <img src="{{ asset('storage/' . $galleryImage->image_path) }}" 
-                                                    class="w-full h-full object-cover">
+                                                    class="w-full h-full object-cover" loading="lazy">
                                                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
                                             </a>
                                         </div>

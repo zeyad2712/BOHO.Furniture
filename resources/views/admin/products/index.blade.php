@@ -134,7 +134,7 @@
                                     <!-- Image -->
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name_en }}"
-                                            class="w-16 h-16 object-cover rounded-lg">
+                                            class="w-16 h-16 object-cover rounded-lg" loading="lazy">
                                     </td>
 
                                     <!-- Product Name -->

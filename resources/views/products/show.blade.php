@@ -82,7 +82,7 @@
                         <button @click="activeImage = '{{ Storage::url($product->image) }}'"
                             :class="activeImage === '{{ Storage::url($product->image) }}' ? 'ring-2 ring-[#7b8f5a] opacity-100 scale-105' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'"
                             class="aspect-square rounded-xl overflow-hidden bg-white shadow-md transition duration-300 transform">
-                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->display_name }}" class="w-full h-full object-cover">
+                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->display_name }}" class="w-full h-full object-cover" loading="lazy">
                         </button>
 
                         <!-- Additional Gallery Thumbnails -->
@@ -90,7 +90,7 @@
                             <button @click="activeImage = '{{ Storage::url($galleryImg->image_path) }}'"
                                 :class="activeImage === '{{ Storage::url($galleryImg->image_path) }}' ? 'ring-2 ring-[#7b8f5a] opacity-100 scale-105' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'"
                                 class="aspect-square rounded-xl overflow-hidden bg-white shadow-md transition duration-300 transform">
-                                <img src="{{ Storage::url($galleryImg->image_path) }}" alt="{{ $product->display_name }}" class="w-full h-full object-cover">
+                                <img src="{{ Storage::url($galleryImg->image_path) }}" alt="{{ $product->display_name }}" class="w-full h-full object-cover" loading="lazy">
                             </button>
                         @endforeach
                     </div>
@@ -721,7 +721,7 @@
                             <!-- Product Image -->
                             <div class="relative overflow-hidden">
                                 <img src="{{ Storage::url($relatedProduct->image) }}" alt="{{ $relatedProduct->display_name }}"
-                                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                                 @if($relatedProduct->discount_percentage > 0)
                                     <div
                                         class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm">

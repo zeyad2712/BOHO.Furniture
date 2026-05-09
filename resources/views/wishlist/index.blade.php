@@ -34,7 +34,7 @@
                             <!-- Product Image -->
                             <div class="relative overflow-hidden">
                                 <img src="{{ asset($product->image) }}" alt="{{ $product->name }}"
-                                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
 
                                 @if($product->status === 'new')
                                     <span

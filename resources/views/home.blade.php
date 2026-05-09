@@ -275,7 +275,7 @@
                     <div
                         class="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-2xl overflow-hidden transform">
                         <img src="{{ isset($landingImage) ? asset('storage/' . $landingImage->image_path) : asset('images/green_sofa_hero.png') }}"
-                            alt="{{ $landingImage->alt_text ?? 'Modern Green Sofa' }}" class="w-full h-auto object-cover">
+                            alt="{{ $landingImage->alt_text ?? 'Modern Green Sofa' }}" class="w-full h-auto object-cover" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -436,7 +436,7 @@
                         <!-- Product Image -->
                         <div class="relative overflow-hidden">
                             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->display_name }}"
-                                class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                                class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                             <!-- Discount Badge -->
                             @if($product->discount_percentage > 0)
                                 <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm">
@@ -526,7 +526,7 @@
                         <!-- Product Image -->
                         <div class="relative overflow-hidden">
                             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                                class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                                class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                             <!-- Discount Badge -->
                             @if($product->discount_percentage > 0)
                                 <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm">
@@ -607,7 +607,7 @@
                 <div class="relative" data-aos="zoom-in-right">
                     <div class="bg-white rounded-3xl p-6 shadow-lg">
                         <img src="{{ asset('images/green_sofa_hero.png') }}" alt="BOHO Furniture"
-                            class="w-full h-auto rounded-2xl object-cover">
+                            class="w-full h-auto rounded-2xl object-cover" loading="lazy">
                     </div>
                 </div>
 

@@ -206,7 +206,7 @@
                         @forelse(\App\Models\Product::latest()->take(5)->get() as $product)
                             <div class="flex items-center space-x-4 p-3 hover:bg-gray-50 rounded-lg transition duration-200">
                                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                                    class="w-16 h-16 object-cover rounded-lg">
+                                    class="w-16 h-16 object-cover rounded-lg" loading="lazy">
                                 <div class="flex-1">
                                     <h4 class="font-semibold text-gray-900">{{ $product->name }}</h4>
                                     <p class="text-sm text-gray-500">{{ $product->category->name ?? 'N/A' }}</p>
