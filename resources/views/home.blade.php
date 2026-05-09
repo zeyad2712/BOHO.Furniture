@@ -253,14 +253,14 @@
                                     d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
                         </a>
-                        <a href="{{ route('about') }}#team"
+                        <!-- <a href="{{ route('about') }}#team"
                             class="inline-flex items-center gap-2 bg-[#7b8f5a] text-white px-4 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#16A34A] transition duration-300 transform hover:scale-105">
                             <span>{{ __('messages.contact_partner') }}</span>
                             <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
 

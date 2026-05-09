@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ProjectVideo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProjectVideoController extends Controller
 {
@@ -24,11 +23,19 @@ class ProjectVideoController extends Controller
         ]);
 
         if ($request->hasFile('video')) {
+            $video = $request->file('video');
+            $fileName = uniqid() . '.' . $video->getClientOriginalExtension();
+            $destination = public_path('storage/projects');
+
+            if (!file_exists($destination)) {
+                mkdir($destination, 0755, true);
+            }
+
+            $video->move($destination, $fileName);
+            $path = 'projects/' . $fileName;
+
             // Deactivate old videos
             ProjectVideo::where('is_active', true)->update(['is_active' => false]);
-
-            // Store new video
-            $path = $request->file('video')->store('projects', 'public');
 
             ProjectVideo::create([
                 'video_path' => $path,
