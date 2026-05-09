@@ -94,7 +94,7 @@
                             <div class="flex justify-between items-center py-2">
                                 <span class="text-gray-500 font-medium">Created At</span>
                                 <span
-                                    class="text-gray-900 text-sm">{{ $product->created_at ? $product->created_at->format('M d, Y') : 'N/A' }}</span>
+                                    class="text-gray-900 text-sm">{{ $product->created_at ? $product->created_at->format('d/m/Y h:i A') : 'N/A' }}</span>
                             </div>
                         </div>
                     </div>
