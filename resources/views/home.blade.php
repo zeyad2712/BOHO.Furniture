@@ -379,23 +379,23 @@
             <div class="flex justify-center">
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     @forelse ($categories as $category)
-                        <a href="{{ route('products', ['category' => $category->slug]) }}" class="group" data-aos="zoom-in"
+                        <!-- <a href="{{ route('products', ['category' => $category->slug]) }}" class="group" data-aos="zoom-in"
                             data-aos-delay="{{ $loop->index * 100 }}">
-                            <div
-                                class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-                                <div class="flex flex-col items-center space-y-4">
-                                    <div
-                                        class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-xl flex items-center justify-center group-hover:bg-opacity-20 transition duration-300">
-                                        <i class="fas fa-{{ $category->icon ?? 'box' }} text-[#7b8f5a] text-3xl"></i>
-                                    </div>
-                                    <div class="text-center">
-                                        <h3 class="font-bold text-gray-800 mb-1">{{ $category->name }}</h3>
-                                        <p class="text-sm text-gray-500">{{ $category->products->count() }}
-                                            {{ __('messages.items_count') }}</p>
-                                    </div>
+                        </a> -->
+                        <div
+                            class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                            <div class="flex flex-col items-center space-y-4">
+                                <div
+                                    class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-xl flex items-center justify-center group-hover:bg-opacity-20 transition duration-300">
+                                    <i class="fas fa-{{ $category->icon ?? 'box' }} text-[#7b8f5a] text-3xl"></i>
+                                </div>
+                                <div class="text-center">
+                                    <h3 class="font-bold text-gray-800 mb-1">{{ $category->name }}</h3>
+                                    <p class="text-sm text-gray-500">{{ $category->products->count() }}
+                                        {{ __('messages.items_count') }}</p>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     @empty
                         <div class="col-span-full">
                             <div class="rounded-2xl p-12 text-center">
