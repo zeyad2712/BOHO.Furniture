@@ -608,8 +608,8 @@
                 <!-- Left: Image -->
                 <div class="relative" data-aos="zoom-in-right">
                     <div class="bg-white rounded-3xl p-6 shadow-lg">
-                        <img src="{{ asset('images/green_sofa_hero.png') }}" alt="BOHO Furniture"
-                            class="w-full h-auto rounded-2xl object-cover" loading="lazy">
+                        <img src="{{ asset('images/boho store.jpeg') }}" alt="BOHO Furniture"
+                            class="w-full h-[500px] rounded-2xl object-cover" loading="lazy">
                     </div>
                 </div>
 
