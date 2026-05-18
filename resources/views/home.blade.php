@@ -254,13 +254,13 @@
                             </svg>
                         </a>
                         <!-- <a href="{{ route('about') }}#team"
-                            class="inline-flex items-center gap-2 bg-[#7b8f5a] text-white px-4 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#16A34A] transition duration-300 transform hover:scale-105">
-                            <span>{{ __('messages.contact_partner') }}</span>
-                            <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                        </a> -->
+                                                    class="inline-flex items-center gap-2 bg-[#7b8f5a] text-white px-4 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#16A34A] transition duration-300 transform hover:scale-105">
+                                                    <span>{{ __('messages.contact_partner') }}</span>
+                                                    <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                    </svg>
+                                                </a> -->
                     </div>
                 </div>
 
@@ -275,7 +275,8 @@
                     <div
                         class="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-2xl overflow-hidden transform">
                         <img src="{{ isset($landingImage) ? asset('storage/' . $landingImage->image_path) : asset('images/green_sofa_hero.png') }}"
-                            alt="{{ $landingImage->alt_text ?? 'Modern Green Sofa' }}" class="w-full h-auto object-cover" loading="lazy">
+                            alt="{{ $landingImage->alt_text ?? 'Modern Green Sofa' }}" class="w-full h-auto object-cover"
+                            loading="lazy">
                     </div>
                 </div>
             </div>
@@ -284,7 +285,7 @@
         <!-- Scroll Indicator -->
         <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-3">
             <!-- Mouse Icon with Circle Background -->
-            <a href="#projects" class="relative">
+            <a href="#categories" class="relative">
                 <div
                     class="w-12 h-12 rounded-full bg-white bg-opacity-80 backdrop-blur-sm shadow-lg flex items-center justify-center animate-bounce">
                     <i class="fas fa-chevron-down text-[#7b8f5a] text-xl animate-pulse"></i>
@@ -293,77 +294,6 @@
             <span class="text-sm font-semibold text-gray-700 bg-white bg-opacity-70 px-3 py-1 rounded-full shadow-sm">
                 {{ __('messages.scroll_explore') }}
             </span>
-        </div>
-    </section>
-
-    <!-- Our Projects Section -->
-    <section class="py-16" id="projects">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Section Header -->
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4" style="color: #8B4513;">
-                    {{ isset($projectVideo->title) ? __($projectVideo->title) : __('messages.our_projects') }}
-                </h2>
-                <div class="w-24 h-1 bg-[#7b8f5a] mx-auto rounded-full"></div>
-                <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">
-                    {{ isset($projectVideo->description) ? __($projectVideo->description) : __('messages.projects_desc') }}
-                </p>
-            </div>
-
-            <!-- Video Container -->
-            <div class="relative max-w-7xl mx-auto" data-aos="zoom-in" data-aos-delay="200">
-                <!-- Decorative Elements -->
-                <div class="absolute -top-6 -right-6 w-32 h-32 bg-[#D4E4D0] rounded-full opacity-50 blur-2xl -z-10"></div>
-                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-[#E8F5E9] rounded-full opacity-50 blur-2xl -z-10"></div>
-
-                <div class="relative">
-                    <video controls autoplay muted loop class="h-[800px] w-full object-contain ">
-                        <source
-                            src="{{ isset($projectVideo) ? asset('storage/' . $projectVideo->video_path) : asset('videos/boho.mp4') }}"
-                            type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="py-8" id="features">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <!-- Feature 1: Free Shipping -->
-                <div data-aos="fade-up" data-aos-delay="100"
-                    class="flex flex-col items-center text-center space-y-3 p-6 rounded-lg ">
-                    <div class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-full flex items-center justify-center">
-                        <i class="fas fa-truck text-[#7b8f5a] text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">{{ __('messages.free_shipping') }}</h3>
-                    <!-- <p class="text-gray-600 text-sm">On orders over $50</p> -->
-                </div>
-
-                <!-- Feature 2: Easy Returns -->
-                <div data-aos="fade-up" data-aos-delay="200"
-                    class="flex flex-col items-center text-center space-y-3 p-6 rounded-lg ">
-                    <div class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-full flex items-center justify-center">
-                        <i class="fas fa-sync-alt text-[#7b8f5a] text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">{{ __('messages.easy_returns') }}</h3>
-                    <!-- <p class="text-gray-600 text-sm">30-day policy</p> -->
-                </div>
-
-                <!-- Feature 3: Quality Guarantee -->
-                <div data-aos="fade-up" data-aos-delay="300"
-                    class="flex flex-col items-center text-center space-y-3 p-6 rounded-lg ">
-                    <div class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-full flex items-center justify-center">
-                        <i class="fas fa-shield-alt text-[#7b8f5a] text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">{{ __('messages.quality_guarantee') }}</h3>
-                    <!-- <p class="text-gray-600 text-sm">Premium materials</p> -->
-                </div>
-
-            </div>
         </div>
     </section>
 
@@ -379,23 +309,24 @@
             <div class="flex justify-center">
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                     @forelse ($categories as $category)
-                        <!-- <a href="{{ route('products', ['category' => $category->slug]) }}" class="group" data-aos="zoom-in"
+                        <a href="{{ route('products', ['category' => $category->slug]) }}" class="group" data-aos="zoom-in"
                             data-aos-delay="{{ $loop->index * 100 }}">
-                        </a> -->
-                        <div
-                            class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
-                            <div class="flex flex-col items-center space-y-4">
-                                <div
-                                    class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-xl flex items-center justify-center group-hover:bg-opacity-20 transition duration-300">
-                                    <i class="fas fa-{{ $category->icon ?? 'box' }} text-[#7b8f5a] text-3xl"></i>
-                                </div>
-                                <div class="text-center">
-                                    <h3 class="font-bold text-gray-800 mb-1">{{ $category->name }}</h3>
-                                    <p class="text-sm text-gray-500">{{ $category->products->count() }}
-                                        {{ __('messages.items_count') }}</p>
+                            <div
+                                class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                                <div class="flex flex-col items-center space-y-4">
+                                    <div
+                                        class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-xl flex items-center justify-center group-hover:bg-opacity-20 transition duration-300">
+                                        <i class="fas fa-{{ $category->icon ?? 'box' }} text-[#7b8f5a] text-3xl"></i>
+                                    </div>
+                                    <div class="text-center">
+                                        <h3 class="font-bold text-gray-800 mb-1">{{ $category->name }}</h3>
+                                        <p class="text-sm text-gray-500">{{ $category->products->count() }}
+                                            {{ __('messages.items_count') }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @empty
                         <div class="col-span-full">
                             <div class="rounded-2xl p-12 text-center">
@@ -592,6 +523,77 @@
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="py-8" id="features">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Feature 1: Free Shipping -->
+                <div data-aos="fade-up" data-aos-delay="100"
+                    class="flex flex-col items-center text-center space-y-3 p-6 rounded-lg ">
+                    <div class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-full flex items-center justify-center">
+                        <i class="fas fa-truck text-[#7b8f5a] text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">{{ __('messages.free_shipping') }}</h3>
+                    <!-- <p class="text-gray-600 text-sm">On orders over $50</p> -->
+                </div>
+
+                <!-- Feature 2: Easy Returns -->
+                <div data-aos="fade-up" data-aos-delay="200"
+                    class="flex flex-col items-center text-center space-y-3 p-6 rounded-lg ">
+                    <div class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-full flex items-center justify-center">
+                        <i class="fas fa-sync-alt text-[#7b8f5a] text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">{{ __('messages.easy_returns') }}</h3>
+                    <!-- <p class="text-gray-600 text-sm">30-day policy</p> -->
+                </div>
+
+                <!-- Feature 3: Quality Guarantee -->
+                <div data-aos="fade-up" data-aos-delay="300"
+                    class="flex flex-col items-center text-center space-y-3 p-6 rounded-lg ">
+                    <div class="w-16 h-16 bg-[#7b8f5a] bg-opacity-10 rounded-full flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-[#7b8f5a] text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">{{ __('messages.quality_guarantee') }}</h3>
+                    <!-- <p class="text-gray-600 text-sm">Premium materials</p> -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Projects Section -->
+    <section class="py-16" id="projects">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4" style="color: #8B4513;">
+                    {{ isset($projectVideo->title) ? __($projectVideo->title) : __('messages.our_projects') }}
+                </h2>
+                <div class="w-24 h-1 bg-[#7b8f5a] mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">
+                    {{ isset($projectVideo->description) ? __($projectVideo->description) : __('messages.projects_desc') }}
+                </p>
+            </div>
+
+            <!-- Video Container -->
+            <div class="relative max-w-7xl mx-auto" data-aos="zoom-in" data-aos-delay="200">
+                <!-- Decorative Elements -->
+                <div class="absolute -top-6 -right-6 w-32 h-32 bg-[#D4E4D0] rounded-full opacity-50 blur-2xl -z-10"></div>
+                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-[#E8F5E9] rounded-full opacity-50 blur-2xl -z-10"></div>
+
+                <div class="relative">
+                    <video controls autoplay muted loop class="h-[800px] w-full object-contain ">
+                        <source
+                            src="{{ isset($projectVideo) ? asset('storage/' . $projectVideo->video_path) : asset('videos/boho.mp4') }}"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About BOHO Section -->
     <section class="py-24 bg-[#D4E4D0] bg-opacity-20" id="about">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -668,20 +670,20 @@
 
     <!-- Testimonials Section -->
     <section class="py-24" id="testimonials" x-data="{ 
-                                activeSlide: 0, 
-                                slidesCount: {{ max(1, ceil($reviews->count() / 5)) }},
-                                modalOpen: false,
-                                selectedReview: {name: '', review: '', stars: 0, gradient: ''},
-                                init() {
-                                    if (this.slidesCount > 1) {
-                                        setInterval(() => {
-                                            if (!this.modalOpen) {
-                                                this.activeSlide = (this.activeSlide + 1) % this.slidesCount;
-                                            }
-                                        }, 5000);
-                                    }
-                                }
-                            }">
+                                                        activeSlide: 0, 
+                                                        slidesCount: {{ max(1, ceil($reviews->count() / 5)) }},
+                                                        modalOpen: false,
+                                                        selectedReview: {name: '', review: '', stars: 0, gradient: ''},
+                                                        init() {
+                                                            if (this.slidesCount > 1) {
+                                                                setInterval(() => {
+                                                                    if (!this.modalOpen) {
+                                                                        this.activeSlide = (this.activeSlide + 1) % this.slidesCount;
+                                                                    }
+                                                                }, 5000);
+                                                            }
+                                                        }
+                                                    }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Title -->
             <h2 data-aos="fade-down" class="text-3xl md:text-4xl font-bold text-center mb-12" style="color: #8B4513;">
@@ -712,12 +714,13 @@
                                     <div
                                         class="relative bg-white rounded-2xl p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-1 group">
                                         <!-- Expand Icon -->
-                                        <button @click="modalOpen = true; selectedReview = {
-                                                                                    name: '{{ addslashes($review->name) }}', 
-                                                                                    review: '{{ addslashes($review->review) }}', 
-                                                                                    stars: {{ $review->stars_count }}, 
-                                                                                    gradient: '{{ $gradients[($chunkIndex * 5 + $loop->index) % count($gradients)] }}'
-                                                                                }"
+                                        <button
+                                            @click="modalOpen = true; selectedReview = {
+                                                                                                                                                            name: '{{ addslashes($review->name) }}', 
+                                                                                                                                                            review: '{{ addslashes($review->review) }}', 
+                                                                                                                                                            stars: {{ $review->stars_count }}, 
+                                                                                                                                                            gradient: '{{ $gradients[($chunkIndex * 5 + $loop->index) % count($gradients)] }}'
+                                                                                                                                                        }"
                                             class="absolute top-4 right-4 group-hover:opacity-100 text-gray-300 hover:text-[#7b8f5a] transition duration-300 transform hover:scale-110">
                                             <i class="fas fa-expand-alt"></i>
                                         </button>

@@ -6,7 +6,7 @@
 @section('content')
 
     <!-- Products Page -->
-    <section class="py-12" style="min-height: 100vh;">
+    <section class="py-12" style="min-height: 100vh; overflow: clip;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Page Header -->
@@ -20,96 +20,110 @@
             </div>
 
             <!-- Filters Section -->
-            <form data-aos="fade-up" method="GET" action="{{ route('products') }}"
-                class="bg-white rounded-2xl shadow-lg p-6 mb-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div x-data="{ openFilter: window.innerWidth >= 1024 }"
+                @resize.window="if(window.innerWidth >= 1024) openFilter = true" class="mb-8" data-aos="fade-up">
+                <!-- Mobile Filter Toggle -->
+                <button type="button" @click="openFilter = !openFilter"
+                    class="lg:hidden w-full bg-white border border-gray-200 text-gray-800 px-4 py-3 rounded-xl font-bold shadow-sm flex justify-between items-center mb-4">
+                    <span class="flex items-center gap-2"><i class="fas fa-filter text-[#7b8f5a]"></i> Filters</span>
+                    <i class="fas text-gray-400" :class="openFilter ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </button>
 
-                    <!-- Search -->
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">{{ __('messages.search') }}</label>
-                        <input type="text" name="search" value="{{ request('search') }}"
-                            placeholder="{{ __('messages.search_products') }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
-                    </div>
+                <form method="GET" action="{{ route('products') }}" x-show="openFilter" x-transition
+                    class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-3">
 
-                    <!-- Category Filter -->
-                    <div>
-                        <label
-                            class="block text-sm font-semibold text-gray-700 mb-2">{{ __('messages.categories') }}</label>
-                        <select name="category"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
-                            <option value="">{{ __('messages.all') }}</option>
-                            @foreach($categories as $cat)
-                                <option value="{{ $cat->slug }}" {{ request('category') == $cat->slug ? 'selected' : '' }}>
-                                    {{ $cat->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <!-- Price Range -->
-                    <div>
-                        <label
-                            class="block text-sm font-semibold text-gray-700 mb-2">{{ __('messages.price_range') }}</label>
-                        <div class="flex items-center gap-2">
-                            <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="0" min="0"
-                                class="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
-                            <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="2000"
-                                max="2000"
-                                class="w-1/2 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
+                        <!-- Search -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{{ __('messages.search') }}</label>
+                            <input type="text" name="search" value="{{ request('search') }}"
+                                placeholder="{{ __('messages.search_products') }}"
+                                class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
                         </div>
+
+                        <!-- Category Filter -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{{ __('messages.categories') }}</label>
+                            <select name="category"
+                                class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
+                                <option value="">{{ __('messages.all') }}</option>
+                                @foreach($categories as $cat)
+                                    <option value="{{ $cat->slug }}" {{ request('category') == $cat->slug ? 'selected' : '' }}>
+                                        {{ $cat->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{{ __('messages.price_range') }}</label>
+                            <div class="flex items-center gap-1.5">
+                                <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="0"
+                                    min="0"
+                                    class="w-1/2 px-2 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
+                                <span class="text-gray-400 text-xs">-</span>
+                                <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="2000"
+                                    max="2000"
+                                    class="w-1/2 px-2 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Min Rating -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{{ __('messages.min_rating') }}</label>
+                            <select name="min_rating"
+                                class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
+                                <option value="">{{ __('messages.any_rating') }}</option>
+                                <option value="4" {{ request('min_rating') == '4' ? 'selected' : '' }}>4+ Stars</option>
+                                <option value="4.5" {{ request('min_rating') == '4.5' ? 'selected' : '' }}>4.5+ Stars</option>
+                                <option value="5" {{ request('min_rating') == '5' ? 'selected' : '' }}>5 Stars</option>
+                            </select>
+                        </div>
+
+                        <!-- Sort By -->
+                        <div>
+                            <label
+                                class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">{{ __('messages.sort_by') }}</label>
+                            <select name="sort"
+                                class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
+                                <option value="name-asc" {{ request('sort') == 'name-asc' ? 'selected' : '' }}>
+                                    {{ __('messages.name_asc') }}
+                                </option>
+                                <option value="name-desc" {{ request('sort') == 'name-desc' ? 'selected' : '' }}>
+                                    {{ __('messages.name_desc') }}
+                                </option>
+                                <option value="price-asc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>
+                                    {{ __('messages.price_asc') }}
+                                </option>
+                                <option value="price-desc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>
+                                    {{ __('messages.price_desc') }}
+                                </option>
+                                <option value="rating-desc" {{ request('sort') == 'rating-desc' ? 'selected' : '' }}>
+                                    {{ __('messages.rating_desc') }}
+                                </option>
+                            </select>
+                        </div>
+
                     </div>
 
-                    <!-- Min Rating -->
-                    <div>
-                        <label
-                            class="block text-sm font-semibold text-gray-700 mb-2">{{ __('messages.min_rating') }}</label>
-                        <select name="min_rating"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
-                            <option value="">{{ __('messages.any_rating') }}</option>
-                            <option value="4" {{ request('min_rating') == '4' ? 'selected' : '' }}>4+ Stars</option>
-                            <option value="4.5" {{ request('min_rating') == '4.5' ? 'selected' : '' }}>4.5+ Stars</option>
-                            <option value="5" {{ request('min_rating') == '5' ? 'selected' : '' }}>5 Stars</option>
-                        </select>
+                    <!-- Filter Buttons -->
+                    <div class="mt-4 flex flex-col sm:flex-row justify-start gap-2 sm:gap-3">
+                        <a href="{{ route('products') }}"
+                            class="text-black px-5 py-1.5 border-2 border-[#7b8f5a] rounded-lg text-sm font-semibold hover:bg-gray-50 transition duration-300 text-center">
+                            {{ __('messages.clear_filters') }}
+                        </a>
+                        <button type="submit"
+                            class="bg-[#7b8f5a] text-white px-5 py-1.5 rounded-lg text-sm font-semibold hover:bg-[#6c7d4e] transition duration-300 w-full sm:w-auto">
+                            {{ __('messages.apply_filters') }}
+                        </button>
                     </div>
-
-                    <!-- Sort By -->
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">{{ __('messages.sort_by') }}</label>
-                        <select name="sort"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7b8f5a] focus:border-transparent">
-                            <option value="name-asc" {{ request('sort') == 'name-asc' ? 'selected' : '' }}>
-                                {{ __('messages.name_asc') }}
-                            </option>
-                            <option value="name-desc" {{ request('sort') == 'name-desc' ? 'selected' : '' }}>
-                                {{ __('messages.name_desc') }}
-                            </option>
-                            <option value="price-asc" {{ request('sort') == 'price-asc' ? 'selected' : '' }}>
-                                {{ __('messages.price_asc') }}
-                            </option>
-                            <option value="price-desc" {{ request('sort') == 'price-desc' ? 'selected' : '' }}>
-                                {{ __('messages.price_desc') }}
-                            </option>
-                            <option value="rating-desc" {{ request('sort') == 'rating-desc' ? 'selected' : '' }}>
-                                {{ __('messages.rating_desc') }}
-                            </option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <!-- Filter Buttons -->
-                <div class="mt-4 flex space-x-3">
-                    <a href="{{ route('products') }}"
-                        class="text-black px-6 py-2 border-2 border-[#7b8f5a] rounded-lg font-semibold hover:bg-gray-50 transition duration-300">
-                        {{ __('messages.clear_filters') }}
-                    </a>
-                    <button type="submit"
-                        class="bg-[#7b8f5a] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#6c7d4e] transition duration-300">
-                        {{ __('messages.apply_filters') }}
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
 
             <!-- Products Count -->
             <div class="flex justify-between items-center mb-6" data-aos="fade-right">
@@ -127,8 +141,11 @@
                         class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 group">
                         <!-- Product Image -->
                         <div class="relative overflow-hidden">
-                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
-                                class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
+                            <a href="{{ route('products.show', $product->id) }}">
+                                <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}"
+                                    class="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
+                                    loading="lazy">
+                            </a>
                             <!-- Discount Badge -->
                             @if($product->discount_percentage > 0)
                                 <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm">

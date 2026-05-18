@@ -37,7 +37,7 @@
 @section('content')
 
     <!-- Product Details Page -->
-    <section class="py-8" style="min-height: 100vh;">
+    <section class="py-8" style="min-height: 100vh; overflow: clip;">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Breadcrumb -->

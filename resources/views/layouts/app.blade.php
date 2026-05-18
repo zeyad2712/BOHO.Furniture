@@ -69,6 +69,45 @@
 
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        } */
+
+        /* Custom Green Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7b8f5a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6c7d4e;
+        }
+
+        /* AOS animations may create temporary elements that overflow */
+        body>*,
+        main>*,
+        section>* {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Extra caution for any element that might cause overflow */
+        [data-aos] {
+            overflow-x: clip !important;
+            overflow-y: visible !important;
+        }
+    </style>
 </head>
 
 
