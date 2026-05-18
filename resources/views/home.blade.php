@@ -175,7 +175,7 @@
                     </div>
 
                     <!-- Statistics -->
-                    <div data-aos="fade-up" data-aos-delay="400" class="flex flex-wrap gap-8 pt-4">
+                    <!-- <div data-aos="fade-up" data-aos-delay="400" class="flex flex-wrap gap-8 pt-4">
                         <div class="text-center">
                             <div class="text-[#7b8f5a] text-4xl font-bold">
                                 <span class="counter" data-target="500">0</span>+
@@ -194,7 +194,7 @@
                             </div>
                             <div class="text-gray-600 text-sm mt-1">{{ __('messages.sustainable') }}</div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Counter Animation Script -->
                     <script>
